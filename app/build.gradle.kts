@@ -19,10 +19,25 @@ android {
             useSupportLibrary = true
         }
     }
+//    signingConfigs {
+//        create("release") {
+//            keyAlias = "friends.jks"
+//            keyPassword = "friends"
+//            storeFile = file("/Users/akshayshenoy/Documents/Projects/Android/JovMit/keystore/friends.jks")
+//            storePassword = "friends"
+//        }
+//    }
 
+//    buildTypes {
+//        getByName("release") {
+//            signingConfig = signingConfigs.getByName("release")
+//            isMinifyEnabled = true
+//            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+//        }
+//    }
     buildTypes {
         release {
-            isMinifyEnabled = true
+            isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
