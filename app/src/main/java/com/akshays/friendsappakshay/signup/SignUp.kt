@@ -82,21 +82,30 @@ private fun PasswordField(
         },
         trailingIcon = {
 
-            IconButton(onClick = {
+            VisibilityToggle(isVisible) {
                 isVisible = !isVisible
-            }) {
-                Image(
-                    painter = painterResource(id = R.drawable.ic_visibility),
-                    contentDescription = stringResource(
-                        id = R.string.toggleVisibility
-                    )
-                )
             }
 
 
         },
         value = value, onValueChange = onValueChanged
     )
+}
+
+@Composable
+private fun VisibilityToggle(isVisible: Boolean,
+                             onToggle:() -> Unit) {
+ //   var isVisible1 = isVisible
+    IconButton(onClick = {
+        onToggle()
+    }) {
+        Image(
+            painter = if (isVisible) painterResource(id = R.drawable.ic_visible) else painterResource(id = R.drawable.in_invisible),
+            contentDescription = stringResource(
+                id = R.string.toggleVisibility
+            )
+        )
+    }
 }
 
 @Composable
