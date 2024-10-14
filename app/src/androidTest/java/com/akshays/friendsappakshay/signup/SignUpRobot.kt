@@ -43,7 +43,7 @@ class SignUpRobot(private val rule: AndroidComposeTestRule<ActivityScenarioRule<
     class SignUpVerification(private val rule: AndroidComposeTestRule<ActivityScenarioRule<MainActivity>, MainActivity>) {
         fun timelineScreenIsPresent() {
             val timeline = rule.activity.getString(R.string.timeline)
-            rule.onNodeWithText(timeline).assertIsNotDisplayed()
+            rule.onNodeWithText(timeline).assertIsDisplayed()
         }
 
 
