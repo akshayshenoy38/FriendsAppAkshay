@@ -1,3 +1,6 @@
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat
+import org.gradle.api.tasks.testing.logging.TestLogEvent
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -61,6 +64,23 @@ android {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
+    }
+
+    testOptions.unitTests.apply {
+        tasks.withType<Test>().all(KotlinClosure1<Test, Test>({
+            apply {
+                testLogging.exceptionFormat = TestExceptionFormat.FULL
+                testLogging.events = setOf(
+                    TestLogEvent.PASSED,
+                    TestLogEvent.FAILED,
+                    TestLogEvent.STANDARD_ERROR,
+                    TestLogEvent.STANDARD_OUT,
+                    TestLogEvent.SKIPPED
+                )
+                testLogging.showCauses = true
+                testLogging.showExceptions = true
+            }
+        }, this))
     }
 }
 
