@@ -1,6 +1,7 @@
 package com.akshays.friendsappakshay.signup
 
 import com.akshays.friendsappakshay.InstantTaskExectorExtension
+import com.akshays.friendsappakshay.RegexCredentialsValidator
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
@@ -45,4 +46,12 @@ class CredentialValidationTest {
         viewModel.createAccount("akshayshenoy38@gmail.com", password, ":about")
         assertEquals(SignupState.BadPassword, viewModel.signupState.value)
     }
+    @Test
+    fun validCredentials() {
+        val validator = RegexCredentialsValidator()
+        val result = validator.validate("akshayshenoy38@gmail.com","Akshay@123")
+        assertEquals(RegexCredentialsValidator.CredentialValidatorResult.ValidCredentials, result)
+    }
+
+
 }
