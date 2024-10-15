@@ -1,18 +1,15 @@
 package com.akshays.friendsappakshay.signup
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import org.junit.Assert.assertEquals
-import org.junit.Rule
-import org.junit.Test
-import org.junit.runner.RunWith
-import org.mockito.junit.MockitoJUnitRunner
+import com.akshays.friendsappakshay.InstantTaskExectorExtension
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.ExtendWith
 
-@RunWith(MockitoJUnitRunner::class)
+@ExtendWith(InstantTaskExectorExtension::class)
 class CredentialValidationTest {
 
     // Use InstantTaskExecutorRule to allow LiveData to be tested synchronously
-    @get:Rule
-    val instantTaskExecutorRule = InstantTaskExecutorRule()
+
 
     @Test
     fun badEmail() {
